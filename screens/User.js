@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
-import { View, Text, Image, SafeAreaView } from 'react-native'
+import { View, Text, Image, SafeAreaView, Pressable } from 'react-native'
+import { MaterialCommunityIcons } from '@expo/vector-icons'
 
 export default function User ({ route, navigation }) {
   const { userId } = route.params
@@ -23,7 +24,7 @@ export default function User ({ route, navigation }) {
       }
 
       const data = await response.json()
-      console.log(data)
+      // console.log(data)
 
       setIsLoading(false)
       if (data.message === 'Not found' || !data.id) {
@@ -59,8 +60,32 @@ export default function User ({ route, navigation }) {
         <Text>{`Username ${userData?.login}`}</Text>
       </View>
       <Text>{`Bio ${userData?.bio || 'None'}`}</Text>
-      <Text>{`Following ${userData.following}`}</Text>
-      <Text>{`Followers ${userData.followers}`}</Text>
+
+      <Pressable
+        id='following'
+        onPress={() => {
+          navigation.push('Users', {
+            login: userData?.login,
+            list: 'following'
+          })
+        }}
+      >
+        <Text>{`Following ${userData?.following}`}</Text>
+        <MaterialCommunityIcons name='chevron-right' size={24} color='black' />
+      </Pressable>
+
+      <Pressable
+        id='followers'
+        onPress={() => {
+          navigation.push('Users', {
+            login: userData?.login,
+            list: 'followers'
+          })
+        }}
+      >
+        <Text>{`Followers ${userData?.followers}`}</Text>
+        <MaterialCommunityIcons name='chevron-right' size={24} color='black' />
+      </Pressable>
     </SafeAreaView>
   )
 }

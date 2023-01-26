@@ -37,7 +37,7 @@ export default function Home ({ navigation }) {
 
       const data = await response.json()
       console.log(`Results for ${data.items.length} users`)
-      console.log(data.items[0])
+      // console.log(data.items[0])
 
       setIsLoading(false)
       if (data['total_count'] === 0) {
