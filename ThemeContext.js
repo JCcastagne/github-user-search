@@ -1,12 +1,13 @@
 import { StyleSheet, Dimensions } from 'react-native'
 import { createContext, useContext } from 'react'
+import { Platform } from 'react-native'
 
 const ThemeContext = createContext()
 const windowHeight = Dimensions.get('window').height
 const windowWidth = Dimensions.get('window').width
 
 function ThemeProvider (props) {
-  return <ThemeContext.Provider value={[styleVariables]} {...props} />
+  return <ThemeContext.Provider value={styleVariables} {...props} />
 }
 
 function useTheme () {
@@ -38,27 +39,30 @@ const styleVariables = {
     surface: '#fafdfc',
     onSurface: '#191c1c',
     surfaceVariant: '#dae4e5',
+    surfaceVariantLight: '#eff5f5',
     onSurfaceVariant: '#3f4949',
-    outline: '#6f7979'
+    outline: '#6f7979',
+    outlineLight: '#b1bdbd'
   },
   fontSizes: {
-    // displayLarge: { fontSize: 40, fontFamily: 'Roboto_400Regular' },
-    displayLarge: { fontSize: 57, fontWeight: 400 },
-    displayMedium: { fontSize: 45, fontWeight: 400 },
-    displaySmall: { fontSize: 36, fontWeight: 400 },
-    headlineLarge: { fontSize: 32, fontWeight: 400 },
-    headlineMedium: { fontSize: 28, fontWeight: 400 },
-    headlineSmall: { fontSize: 24, fontWeight: 400 },
-    titleLarge: { fontSize: 22, fontWeight: 400 },
-    titleMedium: { fontSize: 16, fontWeight: 500 },
-    titleSmall: { fontSize: 14, fontWeight: 500 },
-    labelLarge: { fontSize: 14, fontWeight: 500 },
-    labelMedium: { fontSize: 12, fontWeight: 500 },
-    labelSmall: { fontSize: 11, fontWeight: 500 },
-    bodyLarge: { fontSize: 16, fontWeight: 400 },
-    bodyMedium: { fontSize: 14, fontWeight: 400 },
-    bodySmall: { fontSize: 12, fontWeight: 400 }
-  }
+    displayLarge: { fontSize: 57, fontWeight: '400' },
+    displayMedium: { fontSize: 45, fontWeight: '400' },
+    displaySmall: { fontSize: 36, fontWeight: '400' },
+    headlineLarge: { fontSize: 32, fontWeight: '400' },
+    headlineMedium: { fontSize: 28, fontWeight: '400' },
+    headlineSmall: { fontSize: 24, fontWeight: '400' },
+    titleLarge: { fontSize: 22, fontWeight: '400' },
+    titleMedium: { fontSize: 16, fontWeight: '500' },
+    titleSmall: { fontSize: 14, fontWeight: '500' },
+    labelLarge: { fontSize: 14, fontWeight: '500' },
+    labelMedium: { fontSize: 12, fontWeight: '500' },
+    labelSmall: { fontSize: 11, fontWeight: '500' },
+    bodyLarge: { fontSize: 16, fontWeight: '400' },
+    bodyMedium: { fontSize: 14, fontWeight: '400' },
+    bodySmall: { fontSize: 12, fontWeight: '400' }
+  },
+  windowHeight,
+  windowWidth
 }
 
 export { useTheme, ThemeProvider }

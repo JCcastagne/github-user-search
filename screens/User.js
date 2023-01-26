@@ -2,7 +2,10 @@ import { useEffect, useState } from 'react'
 import { View, Text, Image, SafeAreaView, Pressable } from 'react-native'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 
+import { useTheme } from '../ThemeContext'
+
 export default function User ({ route, navigation }) {
+  const styleVariables = useTheme()
   const { userId } = route.params
   const [isLoading, setIsLoading] = useState(false)
   const [userData, setUserData] = useState(null)
@@ -47,7 +50,14 @@ export default function User ({ route, navigation }) {
   }
 
   return (
-    <SafeAreaView style={Platform.OS === 'android' ? { paddingTop: 38 } : ''}>
+    <SafeAreaView
+      style={
+        (Platform.OS === 'android' ? { paddingTop: 38 } : '',
+        {
+          backgroundColor: styleVariables.colors.background
+        })
+      }
+    >
       <View>
         <Image
           id='avatar'

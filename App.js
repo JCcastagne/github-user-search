@@ -3,19 +3,30 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { View, Text } from 'react-native'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 
-import { ThemeProvider } from './ThemeContext'
+import { ThemeProvider, useTheme } from './ThemeContext'
 import Home from './screens/Home'
 import User from './screens/User'
 import Users from './screens/Users'
 
 const Stack = createNativeStackNavigator()
 
-function CustomHeader ({ navigation, route }) {
-  console.log(route)
+const CustomHeader = ({ navigation, route }) => {
+  const styleVariables = useTheme()
+  console.log(styleVariables.fontSizes)
   return (
-    <View style={{ paddingTop: 44, minHeight: 48, backgroundColor: '#1999' }}>
+    <View
+      style={{
+        paddingTop: 44,
+        minHeight: 48,
+        backgroundColor: styleVariables.colors.background
+      }}
+    >
       {route.name === 'Home' ? (
-        <Text>Github user search</Text>
+        <Text
+          style={[styleVariables.fontSizes.displayLarge, { paddingLeft: 17 }]}
+        >
+          Github user search
+        </Text>
       ) : (
         <MaterialCommunityIcons
           name='arrow-left'

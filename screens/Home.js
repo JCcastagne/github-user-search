@@ -9,12 +9,16 @@ import {
   TextInput,
   Button,
   ActivityIndicator,
-  Platform
+  Platform,
+  Pressable
 } from 'react-native'
+import { MaterialCommunityIcons } from '@expo/vector-icons'
 
+import { useTheme } from '../ThemeContext'
 import UserList from '../components/UserList'
 
 export default function Home ({ navigation }) {
+  const styleVariables = useTheme()
   const [searchInput, setSearchInput] = useState('')
   const [searchResults, setSearchResults] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
@@ -52,41 +56,81 @@ export default function Home ({ navigation }) {
   }
 
   return (
-    <SafeAreaView style={Platform.OS === 'android' ? { paddingTop: 38 } : ''}>
-      <View id='search'>
-        <StatusBar />
+    <SafeAreaView
+      style={{
+        backgroundColor: styleVariables.colors.background
+      }}
+    >
+      <StatusBar />
 
-        <Text>Home</Text>
-
+      <View
+        id='search'
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'flex-end',
+          // height: '100%',
+          padding: 17,
+          paddingBottom: 0
+        }}
+      >
         <TextInput
           onChangeText={setSearchInput}
+          onSubmitEditing={handleSearch}
           value={searchInput}
           placeholder={'Search users'}
           enterKeyHint={'search'}
-          // multiline={'false'}
-          style={styles.input}
+          returnKeyType={'search'}
+          blurOnSubmit={true}
+          placeholderTextColor={styleVariables.colors.outline}
+          style={{
+            width: '100%',
+            borderRadius: 8,
+            borderWidth: 1,
+            borderColor: styleVariables.colors.outlineLight,
+            paddingHorizontal: 22,
+            paddingVertical: 16,
+            marginBottom: 16,
+            color: styleVariables.colors.onBackground
+            // ...styleVariables.fontSizes.bodyLarge
+          }}
         />
 
-        <Button title='Search' onPress={handleSearch} />
+        <Pressable
+          onPress={handleSearch}
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            borderRadius: 8,
+            backgroundColor: styleVariables.colors.tertiaryContainer,
+            padding: 17,
+            ...styleVariables.fontSizes.bodyLarge
+          }}
+        >
+          <MaterialCommunityIcons
+            name='magnify'
+            size={24}
+            color={styleVariables.onTertiaryContainer}
+          />
+        </Pressable>
       </View>
 
       {isLoading && <ActivityIndicator size={'large'} />}
 
       {searchResults?.length > 0 && (
-        <View>
-          <Text>{`${searchResults.length} results`}</Text>
+        <View style={{ padding: 17, paddingTop: 0 }}>
+          <Text
+            style={{
+              marginBottom: 18,
+              color: styleVariables.colors.onBackground,
+              ...styleVariables.fontSizes.headlineSmall
+            }}
+          >{`${searchResults.length} results`}</Text>
+
           <UserList data={searchResults} navigation={navigation} />
         </View>
       )}
     </SafeAreaView>
   )
 }
-
-const styles = StyleSheet.create({
-  input: {
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10
-  }
-})

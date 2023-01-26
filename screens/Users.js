@@ -7,9 +7,12 @@ import {
   ActivityIndicator
 } from 'react-native'
 
+import { useTheme } from '../ThemeContext'
+
 import UserList from '../components/UserList'
 
 export default function Users ({ route, navigation }) {
+  const styleVariables = useTheme()
   const { login, list } = route.params
   const [isLoading, setIsLoading] = useState(false)
   const [followList, setFollowList] = useState(null)
@@ -51,7 +54,12 @@ export default function Users ({ route, navigation }) {
   }, [login])
 
   return (
-    <SafeAreaView style={Platform.OS === 'android' ? { paddingTop: 38 } : ''}>
+    <SafeAreaView
+      style={
+        (Platform.OS === 'android' ? { paddingTop: 38 } : '',
+        { backgroundColor: styleVariables.colors.background })
+      }
+    >
       {isLoading && <ActivityIndicator size={'large'} />}
       {followList?.length > 0 && (
         <View>
