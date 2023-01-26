@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { View, Text, Image } from 'react-native'
+import { View, Text, Image, SafeAreaView } from 'react-native'
 
 export default function User ({ route, navigation }) {
   const { userId } = route.params
@@ -46,7 +46,7 @@ export default function User ({ route, navigation }) {
   }
 
   return (
-    <View>
+    <SafeAreaView style={Platform.OS === 'android' ? { paddingTop: 38 } : ''}>
       <View>
         <Image
           id='avatar'
@@ -61,6 +61,6 @@ export default function User ({ route, navigation }) {
       <Text>{`Bio ${userData?.bio || 'None'}`}</Text>
       <Text>{`Following ${userData.following}`}</Text>
       <Text>{`Followers ${userData.followers}`}</Text>
-    </View>
+    </SafeAreaView>
   )
 }

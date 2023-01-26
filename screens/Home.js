@@ -8,7 +8,8 @@ import {
   View,
   TextInput,
   Button,
-  ActivityIndicator
+  ActivityIndicator,
+  Platform
 } from 'react-native'
 
 import UserList from '../components/UserList'
@@ -51,7 +52,7 @@ export default function Home ({ navigation }) {
   }
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={Platform.OS === 'android' ? { paddingTop: 38 } : ''}>
       <View id='search'>
         <StatusBar />
 
@@ -62,7 +63,7 @@ export default function Home ({ navigation }) {
           value={searchInput}
           placeholder={'Search users'}
           enterKeyHint={'search'}
-          multiline={'false'}
+          // multiline={'false'}
           style={styles.input}
         />
 
