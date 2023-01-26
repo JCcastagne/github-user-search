@@ -4,7 +4,7 @@ export default function UserCard ({ navigation, user }) {
   return (
     <Pressable
       onPress={() => {
-        navigation.navigate('User')
+        navigation.navigate('User', { userId: user.id })
       }}
     >
       <Image
@@ -21,10 +21,3 @@ export default function UserCard ({ navigation, user }) {
     </Pressable>
   )
 }
-
-// Avatar
-// Username
-// Name
-// Description
-// Follower count, i.e. X followers
-// Following count, i.e. X following
