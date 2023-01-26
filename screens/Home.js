@@ -67,11 +67,12 @@ export default function Home ({ navigation }) {
         id='search'
         style={{
           display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'flex-end',
-          // height: '100%',
-          padding: 17,
-          paddingBottom: 0
+          flexDirection: 'row',
+          alignItems: 'center',
+          margin: 17,
+          marginBottom: 28,
+          borderRadius: 28,
+          backgroundColor: styleVariables.colors.secondaryContainer
         }}
       >
         <TextInput
@@ -84,15 +85,10 @@ export default function Home ({ navigation }) {
           blurOnSubmit={true}
           placeholderTextColor={styleVariables.colors.outline}
           style={{
-            width: '100%',
-            borderRadius: 8,
-            borderWidth: 1,
-            borderColor: styleVariables.colors.outlineLight,
-            paddingHorizontal: 22,
-            paddingVertical: 16,
-            marginBottom: 16,
-            color: styleVariables.colors.onBackground
-            // ...styleVariables.fontSizes.bodyLarge
+            flex: 1,
+            padding: 16,
+            color: styleVariables.colors.onSecondaryContainer,
+            ...styleVariables.fontSizes.bodyLarge
           }}
         />
 
@@ -102,16 +98,14 @@ export default function Home ({ navigation }) {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            borderRadius: 8,
-            backgroundColor: styleVariables.colors.tertiaryContainer,
-            padding: 17,
+            padding: 14,
             ...styleVariables.fontSizes.bodyLarge
           }}
         >
           <MaterialCommunityIcons
             name='magnify'
             size={24}
-            color={styleVariables.onTertiaryContainer}
+            color={styleVariables.colors.onSecondaryContainer}
           />
         </Pressable>
       </View>

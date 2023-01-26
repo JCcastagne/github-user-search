@@ -15,7 +15,7 @@ export default function UserCard ({ navigation, user }) {
         alignItems: 'center',
         flexDirection: 'row',
         borderBottomWidth: 1,
-        borderColor: styleVariables.colors.outlineLight,
+        borderColor: styleVariables.colors.outline,
         paddingVertical: 16
       }}
     >
@@ -27,7 +27,7 @@ export default function UserCard ({ navigation, user }) {
         style={{
           width: 100,
           height: 100,
-          borderRadius: 12
+          borderRadius: 9
         }}
       />
       <View
