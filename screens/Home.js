@@ -13,7 +13,7 @@ import {
 
 import Users from './Users'
 
-export default function Home () {
+export default function Home ({ navigation }) {
   const [searchInput, setSearchInput] = useState('')
   const [searchResults, setSearchResults] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
@@ -35,6 +35,7 @@ export default function Home () {
       }
 
       const data = await response.json()
+      console.log(`Results for ${data.items.length} users`)
       console.log(data.items[0])
 
       setIsLoading(false)
@@ -70,7 +71,9 @@ export default function Home () {
 
       {isLoading && <ActivityIndicator size={'large'} />}
 
-      {searchResults?.length > 0 && <Users searchResults={searchResults} />}
+      {searchResults?.length > 0 && (
+        <Users searchResults={searchResults} navigation={navigation} />
+      )}
     </SafeAreaView>
   )
 }
