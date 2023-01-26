@@ -1,9 +1,11 @@
-import { View } from 'react-native'
+import { View, Text, FlatList } from 'react-native'
+import UserCard from '../components/UserCard'
 
-export default function Users () {
+export default function Users ({ searchResults }) {
   return (
-    <View>
-      <Text>Users</Text>
-    </View>
+    <FlatList
+      data={searchResults}
+      renderItem={({ item }) => <UserCard user={item} />}
+    />
   )
 }

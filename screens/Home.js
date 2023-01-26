@@ -7,8 +7,11 @@ import {
   Text,
   View,
   TextInput,
-  Button
+  Button,
+  ActivityIndicator
 } from 'react-native'
+
+import Users from './Users'
 
 export default function Home () {
   const [searchInput, setSearchInput] = useState('')
@@ -23,7 +26,7 @@ export default function Home () {
     setIsLoading(true)
     console.log('searchInput: ', searchInput)
 
-    const url = `https://ai.github.com/search/users?q=${searchInput}`
+    const url = `https://api.github.com/search/users?q=${searchInput}`
 
     try {
       const response = await fetch(url)
@@ -64,6 +67,10 @@ export default function Home () {
 
         <Button title='Search' onPress={handleSearch} />
       </View>
+
+      {isLoading && <ActivityIndicator size={'large'} />}
+
+      {searchResults?.length > 0 && <Users searchResults={searchResults} />}
     </SafeAreaView>
   )
 }
