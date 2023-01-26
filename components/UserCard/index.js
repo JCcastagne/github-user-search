@@ -4,7 +4,7 @@ export default function UserCard ({ navigation, user }) {
   return (
     <Pressable
       onPress={() => {
-        navigation.navigate('User', { userId: user.id })
+        navigation.push('User', { userId: user.id })
       }}
     >
       <Image

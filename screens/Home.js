@@ -11,7 +11,7 @@ import {
   ActivityIndicator
 } from 'react-native'
 
-import Users from './Users'
+import UserList from '../components/UserList'
 
 export default function Home ({ navigation }) {
   const [searchInput, setSearchInput] = useState('')
@@ -72,7 +72,10 @@ export default function Home ({ navigation }) {
       {isLoading && <ActivityIndicator size={'large'} />}
 
       {searchResults?.length > 0 && (
-        <Users searchResults={searchResults} navigation={navigation} />
+        <View>
+          <Text>{`${searchResults.length} results`}</Text>
+          <UserList data={searchResults} navigation={navigation} />
+        </View>
       )}
     </SafeAreaView>
   )
