@@ -18,18 +18,18 @@ function useTheme () {
 
 const styleVariables = {
   colors: {
-    primary: '#00696e',
+    primary: '#00696c',
     onPrimary: '#ffffff',
-    primaryContainer: '#6ff6fe',
-    onPrimaryContainer: '#002022',
-    secondary: '#4a6364',
+    primaryContainer: '#6ff6fa',
+    onPrimaryContainer: '#002021',
+    secondary: '#4a6363',
     onSecondary: '#ffffff',
-    secondaryContainer: '#cce8e9',
-    onSecondaryContainer: '#041f21',
-    tertiary: '#4e5f7d',
+    secondaryContainer: '#cce8e8',
+    onSecondaryContainer: '#041f20',
+    tertiary: '#4d5f7c',
     onTertiary: '#ffffff',
-    tertiaryContainer: '#d6e3ff',
-    onTertiaryContainer: '#081c36',
+    tertiaryContainer: '#d4e3ff',
+    onTertiaryContainer: '#061c36',
     error: '#ba1a1a',
     onError: '#ffffff',
     errorContainer: '#ffdad6',
@@ -38,11 +38,9 @@ const styleVariables = {
     onBackground: '#191c1c',
     surface: '#fafdfc',
     onSurface: '#191c1c',
-    surfaceVariant: '#dae4e5',
-    surfaceVariantLight: '#eff5f5',
+    surfaceVariant: '#dae4e4',
     onSurfaceVariant: '#3f4949',
-    outline: '#6f7979',
-    outlineLight: '#b1bdbd'
+    outline: '#6f7979'
   },
   fontSizes: {
     displayLarge: { fontSize: 57, fontWeight: '400' },
