@@ -54,12 +54,7 @@ export default function Users ({ route, navigation }) {
   }, [login])
 
   return (
-    <SafeAreaView
-      style={
-        (Platform.OS === 'android' ? { paddingTop: 38 } : '',
-        { backgroundColor: styleVariables.colors.background })
-      }
-    >
+    <SafeAreaView style={Platform.OS === 'android' ? { paddingTop: 38 } : ''}>
       {isLoading && <ActivityIndicator size={'large'} />}
       {followList?.length > 0 && (
         <View style={{ padding: 17, paddingTop: 0 }}>

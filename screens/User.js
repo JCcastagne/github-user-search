@@ -50,15 +50,7 @@ export default function User ({ route, navigation }) {
   }
 
   return (
-    <SafeAreaView
-      style={
-        (Platform.OS === 'android' ? { paddingTop: 38 } : '',
-        {
-          height: '100%',
-          backgroundColor: styleVariables.colors.background
-        })
-      }
-    >
+    <SafeAreaView style={Platform.OS === 'android' ? { paddingTop: 38 } : ''}>
       <View style={{ paddingHorizontal: 17 }}>
         <Text
           style={{

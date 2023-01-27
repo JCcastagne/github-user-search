@@ -23,7 +23,10 @@ const CustomHeader = ({ navigation, route }) => {
     >
       {route.name === 'Home' ? (
         <Text
-          style={[styleVariables.fontSizes.displayLarge, { paddingLeft: 17 }]}
+          style={[
+            styleVariables.fontSizes.displayLarge,
+            { paddingLeft: 17, color: styleVariables.colors.onBackground }
+          ]}
         >
           Github user search
         </Text>
@@ -49,6 +52,9 @@ export default function App () {
             name='Home'
             component={Home}
             options={{
+              contentStyle: {
+                backgroundColor: '#fafdfc'
+              },
               headerShadowVisible: false,
               header: props => <CustomHeader {...props} />
             }}

@@ -56,11 +56,7 @@ export default function Home ({ navigation }) {
   }
 
   return (
-    <SafeAreaView
-      style={{
-        backgroundColor: styleVariables.colors.background
-      }}
-    >
+    <SafeAreaView>
       <StatusBar />
 
       <View
