@@ -62,8 +62,14 @@ export default function Users ({ route, navigation }) {
     >
       {isLoading && <ActivityIndicator size={'large'} />}
       {followList?.length > 0 && (
-        <View>
-          <Text>{`${followList.length} results`}</Text>
+        <View style={{ padding: 17, paddingTop: 0 }}>
+          <Text
+            style={{
+              marginBottom: 18,
+              color: styleVariables.colors.onBackground,
+              ...styleVariables.fontSizes.headlineSmall
+            }}
+          >{`${followList?.length} ${list}`}</Text>
           <UserList data={followList} navigation={navigation} />
         </View>
       )}
