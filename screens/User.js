@@ -54,24 +54,53 @@ export default function User ({ route, navigation }) {
       style={
         (Platform.OS === 'android' ? { paddingTop: 38 } : '',
         {
+          height: '100%',
           backgroundColor: styleVariables.colors.background
         })
       }
     >
-      <View>
+      <View style={{ paddingHorizontal: 17 }}>
+        <Text
+          style={{
+            textAlign: 'center',
+            marginBottom: 8,
+            color: styleVariables.colors.onBackground,
+            ...styleVariables.fontSizes.displayMedium
+          }}
+        >
+          {userData?.login || 'Username not available'}
+        </Text>
         <Image
           id='avatar'
           source={{
             uri: userData['avatar_url']
           }}
-          style={{ width: 100, height: 100 }}
+          style={{
+            width: styleVariables.windowWidth - 34,
+            height: styleVariables.windowWidth - 34,
+            borderRadius: 57,
+            marginBottom: 16
+          }}
         />
-        <Text>{`Name ${userData?.name || 'N/A'}`}</Text>
-        <Text>{`Username ${userData?.login}`}</Text>
+        <Text
+          style={{ marginBottom: 4, ...styleVariables.fontSizes.headlineSmall }}
+        >{`${userData?.name || 'No name available'}`}</Text>
       </View>
-      <Text>{`Bio ${userData?.bio || 'None'}`}</Text>
 
-      <View style={{ display: 'flex', flexDirection: 'row' }}>
+      <Text
+        style={{
+          paddingHorizontal: 17,
+          marginBottom: 16,
+          color: styleVariables.colors.onBackground
+        }}
+      >
+        {userData?.bio || 'No bio available'}
+      </Text>
+
+      <View
+        id='lists'
+        style={{ display: 'flex', flexDirection: 'row', paddingHorizontal: 17 }}
+      >
         <Pressable
           id='following'
           onPress={() => {
